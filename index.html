@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Abdelrahman Hachem — Electrical Engineer, University Instructor, Embedded Systems, Automation and Robotics." />
+  <title>Abdelrahman Hachem | Electrical Engineer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#home">AH<span>.</span></a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#research">Research</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">ELECTRICAL ENGINEERING • EMBEDDED SYSTEMS • ROBOTICS</p>
+        <h1>Abdelrahman<br><span>Hachem</span></h1>
+        <p class="hero-text">
+          Electrical Engineer and university instructor building practical systems across
+          embedded electronics, automation, control, IoT, robotics and engineering education.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">Explore Projects</a>
+          <a class="btn secondary" href="assets/Abdelrahman_Hachem_CV.pdf" target="_blank">View CV</a>
+        </div>
+        <div class="quick-stats">
+          <div><strong>ESP32</strong><span>IoT & sensing</span></div>
+          <div><strong>ROS 2</strong><span>Robotics</span></div>
+          <div><strong>PLC</strong><span>Automation</span></div>
+          <div><strong>MATLAB</strong><span>Control</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="tech-card main-board">
+          <div class="board-top">
+            <span class="status-dot"></span>
+            <span>ENGINEERING SYSTEM</span>
+            <span class="mono">ONLINE</span>
+          </div>
+          <div class="board-screen">
+            <div class="wave"></div>
+            <div class="screen-row"><span>SENSOR BUS</span><b>ACTIVE</b></div>
+            <div class="screen-row"><span>CONTROL LOOP</span><b>STABLE</b></div>
+            <div class="screen-row"><span>NETWORK</span><b>CONNECTED</b></div>
+          </div>
+          <div class="pins">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+        <div class="floating-chip chip-1">ESP32</div>
+        <div class="floating-chip chip-2">ROS 2</div>
+        <div class="floating-chip chip-3">PID</div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">01 / ABOUT</p>
+        <h2>Engineering ideas into <span>working systems.</span></h2>
+      </div>
+      <div class="about-grid">
+        <p class="lead">
+          My work combines hardware, software and control engineering — from sensor acquisition
+          and microcontroller firmware to human-machine interfaces, automation and full system integration.
+        </p>
+        <div class="about-card">
+          <p>
+            I also teach engineering subjects at university level, with a focus on connecting
+            theory to hands-on implementation. My portfolio reflects both technical development
+            and engineering education.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-heading">
+        <p class="eyebrow">02 / FEATURED PROJECTS</p>
+        <h2>Selected engineering <span>work.</span></h2>
+      </div>
+
+      <div class="project-grid">
+        <a class="project-card featured" href="projects/telemedguard.html">
+          <div class="project-index">01</div>
+          <div class="project-tags"><span>ESP32</span><span>IoT</span><span>Health Tech</span></div>
+          <h3>TeleMedGuard</h3>
+          <p>Multi-device smart health monitoring platform using wrist, chest and belt modules with sensing, telemetry, GPS and alert logic.</p>
+          <span class="project-link">View project →</span>
+        </a>
+
+        <a class="project-card" href="projects/peltier-control.html">
+          <div class="project-index">02</div>
+          <div class="project-tags"><span>Arduino</span><span>TEC</span><span>Control</span></div>
+          <h3>Dual-Channel Peltier Control</h3>
+          <p>Closed-loop thermal control system with temperature sensing, PWM control, TFT interface and safety handling.</p>
+          <span class="project-link">View project →</span>
+        </a>
+
+        <a class="project-card" href="projects/apparatus-control.html">
+          <div class="project-index">03</div>
+          <div class="project-tags"><span>Embedded</span><span>HMI</span><span>Automation</span></div>
+          <h3>Apparatus Control System</h3>
+          <p>Embedded control platform integrating user inputs, display, sensors and actuator management into a compact engineering interface.</p>
+          <span class="project-link">View project →</span>
+        </a>
+
+        <a class="project-card" href="projects/ros2-scanner.html">
+          <div class="project-index">04</div>
+          <div class="project-tags"><span>ROS 2</span><span>Orbbec</span><span>3D Vision</span></div>
+          <h3>ROS 2 Scanning Robot</h3>
+          <p>Robotics project integrating an Orbbec depth camera toward autonomous environmental scanning and 3D perception.</p>
+          <span class="project-link">View project →</span>
+        </a>
+
+        <a class="project-card" href="projects/robotic-arm.html">
+          <div class="project-index">05</div>
+          <div class="project-tags"><span>Raspberry Pi</span><span>PCA9685</span><span>Vision</span></div>
+          <h3>6-DOF Robotic Arm</h3>
+          <p>Six-axis robotic arm with servo control, graphical interface and computer-vision expansion for object handling.</p>
+          <span class="project-link">View project →</span>
+        </a>
+
+        <a class="project-card" href="projects/smart-steering-wheel.html">
+          <div class="project-index">06</div>
+          <div class="project-tags"><span>Raspberry Pi</span><span>IMU</span><span>Python</span></div>
+          <h3>Smart Steering Wheel</h3>
+          <p>Interactive steering system using motion sensing and a Raspberry Pi interface, developed as a student engineering project.</p>
+          <span class="project-link">View project →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-heading">
+        <p class="eyebrow">03 / TECHNICAL STACK</p>
+        <h2>Tools I use to <span>build.</span></h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Embedded</h3>
+          <p>Arduino • AVR • ATmega328P • ESP32 • Raspberry Pi • Sensor integration • PWM • I²C • SPI • UART</p>
+        </div>
+        <div class="skill-group">
+          <h3>Automation & Control</h3>
+          <p>PLC • Ladder Logic • PID • MATLAB • Simulink • State-space • Feedback systems</p>
+        </div>
+        <div class="skill-group">
+          <h3>Software</h3>
+          <p>Python • C/C++ • OpenCV • ROS 2 • GitHub • Processing • Tkinter</p>
+        </div>
+        <div class="skill-group">
+          <h3>Design & Prototyping</h3>
+          <p>EasyEDA • PCB design • 3D printing • Rapid prototyping • HMI/TFT integration • System wiring</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section split-section" id="teaching">
+      <div>
+        <p class="eyebrow">04 / TEACHING</p>
+        <h2>Engineering <span>education.</span></h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>UNIVERSITY INSTRUCTOR</span>
+          <h3>Matn University College</h3>
+          <p>Microcontrollers & Microprocessors, Control Systems, Signals & Systems, LabVIEW, Optoelectronics, Sensors & Instrumentation, and Electrical Drawing.</p>
+        </div>
+        <div class="timeline-item">
+          <span>HANDS-ON TRAINING</span>
+          <h3>Robotics & Programming Education</h3>
+          <p>Arduino, Python, robotics, electronics prototyping and project-based technical workshops for multiple student levels.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section split-section" id="research">
+      <div>
+        <p class="eyebrow">05 / RESEARCH</p>
+        <h2>Academic <span>work.</span></h2>
+      </div>
+      <div class="research-card">
+        <p class="publication-type">PEER-REVIEWED PUBLICATION</p>
+        <h3>Low-Value Prescribing Among Older Adults With Psychiatric Disorders in a Lebanese Geriatric Care Hospital</h3>
+        <p>Published in <em>Health Science Reports</em> (Wiley).</p>
+        <a href="https://doi.org/10.1002/hsr2.72799" target="_blank" rel="noopener">Open publication →</a>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <p class="eyebrow">06 / CONTACT</p>
+      <h2>Have an engineering project or collaboration in mind?</h2>
+      <p>Connect with me through LinkedIn, GitHub or email.</p>
+      <div class="contact-actions">
+        <a class="btn primary" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn secondary" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn secondary" href="mailto:YOUR-EMAIL@example.com">Email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Abdelrahman Hachem</span>
+    <span>Built for GitHub Pages</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
