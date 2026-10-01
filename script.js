@@ -164,81 +164,44 @@ function renderSite(site) {
 
   // ---------- Profile Image ----------
 
-  const portraitShell =
-    el("portraitShell");
+const portraitShell = el("portraitShell");
 
-  if (portraitShell) {
+if (portraitShell) {
 
-    if (
-      site.profile_image &&
-      String(site.profile_image).trim() !== ""
-    ) {
+  // Use CMS image if available.
+  // Otherwise use the known working profile image.
+  const profileImage =
+    site.profile_image && String(site.profile_image).trim() !== ""
+      ? site.profile_image
+      : "/assets/profile.png";
 
-      const img =
-        document.createElement("img");
+  const img = document.createElement("img");
 
-      img.src =
-        withCacheBust(site.profile_image);
+  img.src = `${profileImage}?v=${Date.now()}`;
+  img.alt = site.name || "Abdelrahman Hachem";
+  img.loading = "eager";
+  img.decoding = "async";
 
-      img.alt =
-        name;
+  img.style.width = "100%";
+  img.style.height = "100%";
+  img.style.objectFit = "cover";
 
-      img.loading =
-        "eager";
+  img.onload = () => {
+    console.log("Profile image loaded:", profileImage);
+  };
 
-      img.decoding =
-        "async";
+  img.onerror = () => {
+    console.error("Profile image failed:", profileImage);
 
-      img.onload = () => {
-
-        console.log(
-          "Profile image loaded:",
-          site.profile_image
-        );
-
-      };
-
-      img.onerror = () => {
-
-        console.warn(
-          "Profile image could not be loaded:",
-          site.profile_image
-        );
-
-        portraitShell.innerHTML = `
-          <div class="portrait-placeholder">
-            <span>${escapeHTML(
-              site.short_name || "AH"
-            )}</span>
-
-            <small>
-              Profile image could not be loaded
-            </small>
-          </div>
-        `;
-
-      };
-
-      portraitShell.innerHTML = "";
-      portraitShell.appendChild(img);
-
-    } else {
-
-      portraitShell.innerHTML = `
-        <div class="portrait-placeholder">
-          <span>${escapeHTML(
-            site.short_name || "AH"
-          )}</span>
-
-          <small>
-            Add a profile image from Pages CMS
-          </small>
-        </div>
-      `;
-
+    // Final emergency fallback
+    if (!img.src.includes("/assets/profile.png")) {
+      img.src = `/assets/profile.png?v=${Date.now()}`;
     }
-  }
+  };
 
+  portraitShell.innerHTML = "";
+  portraitShell.appendChild(img);
+}
 
   // ---------- CV ----------
 
