@@ -1,1 +1,17 @@
-const e=id=>document.getElementById(id),esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));async function j(p){let r=await fetch(p+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error(p);return r.json()}function site(s){document.title=s.name+' | Engineering Portfolio';e('brandText').textContent=s.short_name||'AH';e('heroEyebrow').textContent=s.eyebrow||'';let parts=(s.name||'').split(' ');e('heroName').innerHTML=esc(parts.shift()||'')+(parts.length?'<br><span>'+esc(parts.join(' '))+'</span>':'');e('heroIntro').textContent=s.intro||'';e('headline').textContent=s.headline||'';e('aboutText').textContent=s.about||'';e('contactHeading').textContent=s.contact_heading||'';e('contactText').textContent=s.contact_text||'';e('footerName').textContent=s.name||'';e('footerLocation').textContent=s.location||'';if(s.profile_image)e('portrait').innerHTML='<img src="'+esc(s.profile_image)+'" alt="'+esc(s.name)+'">';if(s.cv){e('cvButton').href=s.cv;e('cvButton').classList.remove('hidden')}let a=[];if(s.linkedin)a.push(['LinkedIn',s.linkedin]);if(s.github)a.push(['GitHub',s.github]);if(s.email)a.push(['Email','mailto:'+s.email]);e('contactActions').innerHTML=a.map((x,i)=>'<a class="btn '+(i?'secondary':'primary')+'" href="'+esc(x[1])+'"'+(x[1].startsWith('mailto:')?'':' target="_blank" rel="noopener"')+'>'+esc(x[0])+'</a>').join('')}function projects(ps){e('projectGrid').innerHTML=[...ps].sort((a,b)=>Number(b.featured)-Number(a.featured)).map(p=>{let im=p.cover_image?'<img src="'+esc(p.cover_image)+'" alt="'+esc(p.title)+'">':'<div class="placeholder-mark">'+esc((p.title||'PR').slice(0,2).toUpperCase())+'</div>';let tags=(p.technologies||[]).slice(0,5).map(t=>'<span>'+esc(t)+'</span>').join('');return '<a class="project-card" href="project.html?project='+encodeURIComponent(p.slug)+'"><div class="project-image">'+im+'</div><div class="project-body"><div class="tags">'+tags+'</div><h3>'+esc(p.title)+'</h3><p>'+esc(p.summary)+'</p><span class="project-link">View project →</span></div></a>'}).join('')}function skills(xs){e('skillsGrid').innerHTML=xs.map(x=>'<div class="skill-group"><h3>'+esc(x.category)+'</h3><p>'+(x.items||[]).map(esc).join(' • ')+'</p></div>').join('')}function teaching(xs){e('teachingList').innerHTML=xs.map(x=>'<div class="timeline-item"><span>'+esc(x.organization||'TEACHING')+'</span><h3>'+esc(x.role)+'</h3><p>'+esc(x.description)+'</p></div>').join('')}function research(xs){e('researchList').innerHTML=xs.map(x=>'<article class="research-card"><p class="publication">'+esc(x.publication||'RESEARCH')+'</p><h3>'+esc(x.title)+'</h3><p>'+esc(x.description||'')+'</p>'+(x.url?'<a href="'+esc(x.url)+'" target="_blank" rel="noopener">Open publication →</a>':'')+'</article>').join('')}function ui(){let t=document.querySelector('.menu-toggle'),n=document.querySelector('.nav');if(t&&n){t.onclick=()=>n.classList.toggle('open');n.querySelectorAll('a').forEach(a=>a.onclick=()=>n.classList.remove('open'))}e('year').textContent=new Date().getFullYear()}(async()=>{try{let [s,p,k,t,r]=await Promise.all([j('content/site.json'),j('content/projects.json'),j('content/skills.json'),j('content/teaching.json'),j('content/research.json')]);site(s);projects(p);skills(k);teaching(t);research(r);ui()}catch(x){console.error(x);e('loadError').classList.remove('hidden')}})();
+async function getJSON(path, fallback = []) {
+  try {
+    const r = await fetch(`${path}?v=${Date.now()}`, {
+      cache: "no-store"
+    });
+
+    if (!r.ok) {
+      console.warn(`Could not load ${path}: ${r.status}`);
+      return fallback;
+    }
+
+    return await r.json();
+  } catch (error) {
+    console.warn(`Could not load ${path}`, error);
+    return fallback;
+  }
+}
