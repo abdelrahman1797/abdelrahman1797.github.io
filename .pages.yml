@@ -1,0 +1,129 @@
+media:
+  - name: profile_images
+    label: Profile images
+    input: assets/images/profile
+    output: /assets/images/profile
+    categories: [image]
+    rename: safe
+  - name: project_images
+    label: Project images
+    input: assets/images/projects
+    output: /assets/images/projects
+    categories: [image]
+    rename: safe
+  - name: documents
+    label: Documents
+    input: assets/documents
+    output: /assets/documents
+    categories: [document]
+    rename: safe
+
+content:
+  - name: site
+    label: Home & Contact
+    type: file
+    path: content/site.json
+    format: json
+    operations: { delete: false }
+    fields:
+      - { name: name, label: Full name, type: string, required: true }
+      - { name: short_name, label: Logo initials, type: string, required: true }
+      - { name: eyebrow, label: Small line above your name, type: string }
+      - { name: headline, label: Main headline, type: string }
+      - { name: intro, label: Short introduction, type: text }
+      - { name: about, label: About me, type: text }
+      - name: profile_image
+        label: Profile image
+        type: image
+        options: { media: profile_images, extensions: [jpg, jpeg, png, webp] }
+      - name: cv
+        label: CV / Resume PDF
+        type: file
+        options: { media: documents, extensions: [pdf] }
+      - { name: github, label: GitHub URL, type: string }
+      - { name: linkedin, label: LinkedIn URL, type: string }
+      - { name: email, label: Public email, type: string }
+      - { name: location, label: Location, type: string }
+      - { name: contact_heading, label: Contact heading, type: string }
+      - { name: contact_text, label: Contact text, type: text }
+
+  - name: projects
+    label: Projects
+    type: file
+    path: content/projects.json
+    format: json
+    list: true
+    operations: { delete: false }
+    fields:
+      - name: slug
+        label: URL slug
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: "Use lowercase letters, numbers and hyphens only."
+        description: "Example: telemedguard or ros2-scanner"
+      - { name: title, label: Project title, type: string, required: true }
+      - { name: category, label: Category, type: string }
+      - { name: featured, label: Featured project, type: boolean }
+      - { name: summary, label: Short description, type: text, required: true }
+      - name: cover_image
+        label: Main project image
+        type: image
+        options: { media: project_images, extensions: [jpg, jpeg, png, webp] }
+      - name: gallery
+        label: Project gallery
+        type: image
+        options:
+          media: project_images
+          multiple: { max: 20 }
+          unique: true
+          extensions: [jpg, jpeg, png, webp]
+      - { name: technologies, label: Technologies, type: string, list: true }
+      - name: full_description
+        label: Full project description
+        type: rich-text
+        options: { format: html, media: project_images }
+      - { name: highlights, label: Key engineering features, type: string, list: true }
+      - { name: github_url, label: Project GitHub URL, type: string }
+      - { name: demo_url, label: Demo / video URL, type: string }
+
+  - name: skills
+    label: Skills
+    type: file
+    path: content/skills.json
+    format: json
+    list: true
+    operations: { delete: false }
+    fields:
+      - { name: category, label: Skill group, type: string, required: true }
+      - { name: items, label: Skills, type: string, list: true }
+
+  - name: teaching
+    label: Teaching
+    type: file
+    path: content/teaching.json
+    format: json
+    list: true
+    operations: { delete: false }
+    fields:
+      - { name: role, label: Role, type: string, required: true }
+      - { name: organization, label: Organization, type: string }
+      - { name: description, label: Description, type: text }
+
+  - name: research
+    label: Research
+    type: file
+    path: content/research.json
+    format: json
+    list: true
+    operations: { delete: false }
+    fields:
+      - { name: title, label: Publication / research title, type: string, required: true }
+      - { name: publication, label: Journal / venue, type: string }
+      - { name: url, label: Link / DOI, type: string }
+      - { name: description, label: Description, type: text }
+
+settings:
+  content: { merge: true }
+  commit: { identity: user }
